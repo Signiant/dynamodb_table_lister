@@ -1,0 +1,10 @@
+{
+	"frequency": 86400, 
+	"outputDir": "/dynamodb_table_defs",
+	"createAllTableFile": true,
+	"region": "dynamodb.us-east-1.amazonaws.com",
+	"readIncreasePercent": "50",
+	"writeIncreasePercent": "50",
+	"access_key_id": "",
+	"secret_access_key": ""
+}
