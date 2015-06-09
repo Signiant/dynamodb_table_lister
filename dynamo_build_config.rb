@@ -169,6 +169,7 @@ begin
 		  jsonFile = File.read(arg)
 		  config_hash = JSON.parse(jsonFile)
 		  @frequency = config_hash['frequency']
+		  @verbose = config_hash['verbose']
 		  @create_folder = config_hash['outputDir']
 		  @cmdline_table_prefix = config_hash['tablePrefix']
 		  @readIncreasePercent = config_hash['readIncreasePercent']
@@ -210,10 +211,40 @@ rescue => err
         display_menu
 end
 
+# See if there are any environment specific overrides
+if ENV['VERBOSE']
+	myPuts "Verbose specified in environment - enabling verbose logging",true
+	@verbose = true
+end
+
+if ENV['DYNAMODB_REGION']
+	myPuts "DynamoDB region specified in environment - #{ENV['DYNAMODB_REGION']}",true
+	if validate_region( ENV['DYNAMODB_REGION'],@dynamo_regions)
+		@dynamo_db_endpoint = ENV['DYNAMODB_REGION']
+	else
+		puts "Error: Invalid region specified in the environment. Region must be one of..."
+		display_regions
+	end
+end
+
+if ENV['FREQUENCY']
+	myPuts "Polling frequency specified in environment - #{ENV['FREQUENCY']}",true
+	@frequency = Integer(ENV['FREQUENCY'])
+end
+
+if ENV['READPERCENT']
+	myPuts "Read increase percentage specified in environment - #{ENV['READPERCENT']}",true
+	@readIncreasePercent = Integer(ENV['READPERCENT'])
+end
+
+if ENV['WRITEPERCENT']
+	myPuts "Write increase percentage specified in environment - #{ENV['WRITEPERCENT']}",true
+	@writeIncreasePercent = Integer(ENV['WRITEPERCENT'])
+end
+
 puts "Creating Config Yaml files in directory #{@create_folder} every #{@frequency} seconds"
 
 FileUtils.mkpath(@create_folder, :mode => 0777)
-
 
 # DJN loop here
 while true do

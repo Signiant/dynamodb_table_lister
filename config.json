@@ -5,6 +5,7 @@
 	"region": "dynamodb.us-east-1.amazonaws.com",
 	"readIncreasePercent": "50",
 	"writeIncreasePercent": "50",
+	"verbose": false,
 	"access_key_id": "",
 	"secret_access_key": ""
 }
