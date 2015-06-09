@@ -218,7 +218,7 @@ if ENV['VERBOSE']
 end
 
 if ENV['DYNAMODB_REGION']
-	myPuts "DynamoDB region specified in environment - #{ENV['DYNAMODB_REGION']}",true
+	puts "DynamoDB region specified in environment - #{ENV['DYNAMODB_REGION']}"
 	if validate_region( ENV['DYNAMODB_REGION'],@dynamo_regions)
 		@dynamo_db_endpoint = ENV['DYNAMODB_REGION']
 	else
@@ -228,17 +228,17 @@ if ENV['DYNAMODB_REGION']
 end
 
 if ENV['FREQUENCY']
-	myPuts "Polling frequency specified in environment - #{ENV['FREQUENCY']}",true
+	puts "Polling frequency specified in environment - #{ENV['FREQUENCY']}"
 	@frequency = Integer(ENV['FREQUENCY'])
 end
 
 if ENV['READPERCENT']
-	myPuts "Read increase percentage specified in environment - #{ENV['READPERCENT']}",true
+	puts "Read increase percentage specified in environment - #{ENV['READPERCENT']}"
 	@readIncreasePercent = Integer(ENV['READPERCENT'])
 end
 
 if ENV['WRITEPERCENT']
-	myPuts "Write increase percentage specified in environment - #{ENV['WRITEPERCENT']}",true
+	puts "Write increase percentage specified in environment - #{ENV['WRITEPERCENT']}"
 	@writeIncreasePercent = Integer(ENV['WRITEPERCENT'])
 end
 
