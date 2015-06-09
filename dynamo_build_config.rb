@@ -9,6 +9,9 @@ require 'aws-sdk-v1'
 require 'fileutils'
 require 'json'
 
+# Turn off buffering
+STDOUT.sync = true
+
 CODE_OK = 0
 CODE_WARNING = 1
 CODE_CRITICAL = 2
