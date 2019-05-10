@@ -1,4 +1,4 @@
-FROM ruby:2.1-onbuild
+FROM ruby:2.4.1-onbuild
 
 RUN mkdir /dynamodb_table_defs
 VOLUME /dynamodb_table_defs
