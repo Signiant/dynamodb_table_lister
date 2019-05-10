@@ -17,6 +17,7 @@ DEPENDENCIES
   aws-sdk-v1
   fileutils
   json
+  nokogiri (>= 1.8.5)
 
 BUNDLED WITH
    1.17.3
